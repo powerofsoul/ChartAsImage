@@ -4,8 +4,9 @@ export class Chart{
     style: string;
     private chartMethod;
     
-    protected constructor(chartMethod){
+    protected constructor(chartMethod, style){
         this.chartMethod = chartMethod;
+        this.style = style;
     }
 
     registerRequest(expressApp, path): void {
@@ -28,15 +29,17 @@ export class Chart{
 
     parseRequest(req): object {
         var parameters = req.query;
+        var keyLabel = Object.keys(parameters)[0];
+        var valueLabel = Object.keys(parameters)[1];
 
-        var labels = parameters['labels'].split(',');
-        var values = parameters['values'].split(',');
+        var labels = parameters[keyLabel].split(',');
+        var values = parameters[valueLabel].split(',');
     
         var data = labels.map((v,i) => {
-            return {
-                label: v, 
-                value: values[i]
-            }
+            var obj = {};
+            obj[keyLabel] = v;
+            obj[valueLabel] = values[i];
+            return obj;
         });
 
         return data;

@@ -2,6 +2,7 @@
 
 import * as express from "express";
 import { PieChart } from "./charts/PieChart";
+import { BarChart } from "./charts/BarChart";
 
 class Server {
 
@@ -14,6 +15,7 @@ class Server {
 
   public start() : void {
     new PieChart().registerRequest(this.app, "/pie");
+    new BarChart().registerRequest(this.app, "/bar");
     
     this.app.listen(this.port, () => console.log(`Example app listening on port ${this.port}!`));
   }

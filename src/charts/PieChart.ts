@@ -3,6 +3,14 @@ import d3NodePie = require('d3node-piechart');
 
 export class PieChart extends Chart{
     constructor(){
-        super(d3NodePie);
+        var customStyle = `
+        .arc text {
+            font: 10px sans-serif;
+            text-anchor: middle;
+        }
+        .arc path {
+            stroke: #fff;
+        }`;
+        super(d3NodePie, customStyle);
     }
 }
