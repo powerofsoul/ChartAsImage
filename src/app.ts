@@ -13,7 +13,8 @@ class Server {
   }
 
   public start() : void {
-    PieChart.registerRequest(this.app, "/pie");
+    new PieChart().registerRequest(this.app, "/pie");
+    
     this.app.listen(this.port, () => console.log(`Example app listening on port ${this.port}!`));
   }
 }
