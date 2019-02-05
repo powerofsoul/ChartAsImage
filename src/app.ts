@@ -1,6 +1,7 @@
 "use strict";
 
 import * as express from "express";
+import { PieChart } from "./charts/PieChart";
 
 class Server {
 
@@ -13,7 +14,8 @@ class Server {
 
   public start() : void {
     this.app.get('/pie', (req, res) =>{
-        res.send("445");
+        const pieChart = new PieChart();
+        res.send(pieChart.getChart(req));
     });
 
     this.app.listen(this.port, () => console.log(`Example app listening on port ${this.port}!`));
