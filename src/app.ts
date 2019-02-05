@@ -13,11 +13,7 @@ class Server {
   }
 
   public start() : void {
-    this.app.get('/pie', (req, res) =>{
-        const pieChart = new PieChart();
-        res.send(pieChart.getChart(req));
-    });
-
+    PieChart.registerRequest(this.app, "/pie");
     this.app.listen(this.port, () => console.log(`Example app listening on port ${this.port}!`));
   }
 }

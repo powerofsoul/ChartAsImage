@@ -1,5 +1,6 @@
 import { Chart } from "./Chart";
 import d3NodePie = require('d3node-piechart');
+import SVGToPng  = require('convert-svg-to-png')
 
 export class PieChart implements Chart{
     style: string =`
@@ -12,7 +13,7 @@ export class PieChart implements Chart{
         }
     `;
     
-    public getChart(request): string{
+    public svgString(request): string{
         var data = this.parseRequest(request);
         var pie =  d3NodePie({data: data, style: this.style});
 
@@ -33,5 +34,17 @@ export class PieChart implements Chart{
         });
 
         return data;
+    }
+
+    static registerRequest(expressApp, path): void {
+        expressApp.get(path, (req, res) =>{
+            res.set('Content-Type', 'image/png');
+            const pieChart = new PieChart();
+            var svg = pieChart.svgString(req);
+
+            SVGToPng.convert(svg).then((png)=>{
+                res.send(png);
+            });
+        });
     }
 }
