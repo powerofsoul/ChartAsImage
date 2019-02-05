@@ -30,17 +30,23 @@ export class Chart{
     parseRequest(req): object {
         var parameters = req.query;
         var keyLabel = Object.keys(parameters)[0];
-        var valueLabel = Object.keys(parameters)[1];
-
-        var labels = parameters[keyLabel].split(',');
-        var values = parameters[valueLabel].split(',');
-    
-        var data = labels.map((v,i) => {
-            var obj = {};
-            obj[keyLabel] = v;
-            obj[valueLabel] = values[i];
-            return obj;
+        var keyAndValues = [];
+        Object.keys(parameters).forEach(k => {
+            keyAndValues.push({key: k, values : parameters[k].split(',')})         
         });
+
+        console.log(JSON.stringify(keyAndValues));
+
+        var data = [];
+        
+        for(var i=0;i<keyAndValues[0].values.length;i++){
+            var currentResult = {};
+            for(var j=0;j<keyAndValues.length;j++){
+                currentResult[keyAndValues[j].key] = keyAndValues[j].values[i];
+            }
+
+            data.push(currentResult);
+        }
 
         return data;
     }
