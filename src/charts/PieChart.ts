@@ -5,7 +5,9 @@ export class PieChart extends Chart{
     constructor(){
         var customStyle = `
         .arc text {
-            font: 10px sans-serif;
+            font: 20px sans-serif;
+            fill:white;
+            font-weight:bold;
             text-anchor: middle;
         }
         .arc path {
