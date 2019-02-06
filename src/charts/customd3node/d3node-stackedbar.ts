@@ -10,15 +10,17 @@ export function stackedBarbar({
     </div>
   `,
   style: _style = '',
-  width: _width = 500,
+  legend_width: _legend_width = 150,
+  width: _width = 500 + _legend_width,
   height: _height = 500,
   margin: _margin = { top: 20, right: 20, bottom: 30, left: 40 },
   barColor: _barColor = '#2f5597',
+  barColor2: _barColor2 = '#e5f0f9',
   barHoverColor: _barHoverColor = 'brown',
 } = {}) {
   const _svgStyles = `
     .bar { fill: ${_barColor}; }
-    .bar2 {fill: #e5f0f9}
+    .bar2 {fill: ${_barColor2} }
     .bar2:hover {fill: red}
     .bar:hover { fill: ${_barHoverColor}; }
   `;
@@ -42,7 +44,7 @@ export function stackedBarbar({
   const y = d3.scaleLinear()
     .range([height, 0]);
 
-  const svg = d3n.createSVG(_width, _height)
+  const svg = d3n.createSVG(_width + _legend_width, _height)
     .append('g')
     .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
 
@@ -106,7 +108,41 @@ export function stackedBarbar({
     .attr("x", function (d) { return x(d.key) + x.bandwidth() / 2 })
     .attr("y", function (d) { return y(d.value - d.value / 2); });
 
-  // add the x Axis
+  var legend = svg.append("g")
+    .attr("class", "legend")
+    .attr("x", width)
+    .attr("y", height/2)
+    .attr("height", 100)
+    .attr("width", 100);
+
+  legend.append("rect")
+    .attr("x", width)
+    .attr("y", height/2)
+    .attr("width", 10)
+    .attr("height", 10)
+    .style("fill", _barColor);
+
+
+  legend.append("text")
+    .attr("x", width + 15)
+    .attr("y", height/2 + 10)
+    .style("font-size", 13)
+    .text(data[0].legend);
+
+  legend.append("rect")
+    .attr("x", width)
+    .attr("y", height/2 + 20)
+    .attr("width", 10)
+    .attr("height", 10)
+    .style("fill", _barColor2);
+
+  legend.append("text")
+    .attr("x", width + 15)
+    .attr("y", height/2 + 28)
+    .style("font-size", 13)
+    .text(data[1].legend);
+
+
   svg.append('g')
     .style("font", "14px times")
     .style("font-weight", "bold")
