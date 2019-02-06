@@ -1,6 +1,7 @@
 node_modules
 dist
 .tscache
+tscommand*
 
 # Created by https://www.gitignore.io/api/node,grunt
 # Edit at https://www.gitignore.io/?templates=node,grunt
