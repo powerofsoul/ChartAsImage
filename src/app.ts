@@ -17,9 +17,9 @@ class Server {
   public start() : void {
     new PieChart().registerRequest(this.app, "/pie");
     new BarChart().registerRequest(this.app, "/bar");
-    new StackedBarChart().registerRequest(this.app, "/stackedbar");
+    new StackedBarChart().registerRequest(this.app, "/valuemax");
 
-    this.app.listen(this.port, () => console.log(`Example app listening on port ${this.port}!`));
+    this.app.listen(this.port);
   }
 }
 
