@@ -1,5 +1,5 @@
 # Server Side Chart Image Generator
-
+### Have your charts be displayed everywhere. It's as simple as specifying an url.
 ## Available charts
 
 ### 1. Pie Chart:
