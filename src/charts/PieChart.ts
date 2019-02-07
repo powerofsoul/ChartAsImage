@@ -1,5 +1,5 @@
 import { Chart } from "./Chart";
-import d3NodePie = require('d3node-piechart');
+import { pie } from "./customd3node/d3node-piechart";
 
 export class PieChart extends Chart{
     constructor(){
@@ -13,6 +13,6 @@ export class PieChart extends Chart{
         .arc path {
             stroke: #fff;
         }`;
-        super(d3NodePie, customStyle);
+        super(pie, customStyle);
     }
 }

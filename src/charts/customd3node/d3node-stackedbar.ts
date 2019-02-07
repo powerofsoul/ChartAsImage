@@ -1,6 +1,6 @@
 import D3Node = require('d3-node');
 
-export function stackedBarbar({
+export function stackedBar({
   data = [],
   selector: _selector = '#chart',
   container: _container = `
@@ -82,11 +82,13 @@ export function stackedBarbar({
     .attr('y', (d) => y(d.value))
     .attr('height', (d) => height - y(d.value))
 
+  var difference = data[0].diff == "true";
+
   svg.selectAll(".mytext")
     .data(data)
     .enter()
     .append("text")
-    .text(function (d) { return d.max; })
+    .text(function (d) { return difference ? d.max - d.value : d.max;; })
     .style("text-anchor", "middle")
     .style("fill", "black")
     .style("font-family", "Arial")
@@ -94,7 +96,7 @@ export function stackedBarbar({
     .style("font-weight", "bold")
     .attr("x", function (d) { return x(d.key) + x.bandwidth() / 2 })
     .attr("y", function (d) { return y(d.max - (d.max - d.value) / 2); });
-
+  
   svg.selectAll(".mytext2")
     .data(data)
     .enter()
