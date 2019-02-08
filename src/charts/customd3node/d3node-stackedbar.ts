@@ -51,7 +51,7 @@ export function stackedBar({
   x.domain(data.map((d) => d.key));
   y.domain([0, d3.max(data, (d) => parseInt(d.max))]);
 
-  const yTicks = 15;
+  const yTicks = 7;
 
   svg.selectAll('.hline')
     .data(d3.range(yTicks)).enter()
