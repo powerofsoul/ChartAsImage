@@ -120,39 +120,41 @@ export function stackedBar({
   legend.append("rect")
     .attr("x", width)
     .attr("y", height/2)
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("width", 20)
+    .attr("height", 20)
     .style("fill", _barColor);
 
 
   legend.append("text")
-    .attr("x", width + 15)
+    .attr("x", width + 30)
     .attr("y", height/2 + 10)
-    .style("font-size", 13)
+    .style("font-size", 18)
     .text(data[0].legend);
 
   legend.append("rect")
     .attr("x", width)
-    .attr("y", height/2 + 20)
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("y", height/2 + 40)
+    .attr("width", 20)
+    .attr("height", 20)
     .style("fill", _barColor2);
 
   legend.append("text")
-    .attr("x", width + 15)
-    .attr("y", height/2 + 28)
-    .style("font-size", 13)
+    .attr("x", width + 30)
+    .attr("y", height/2 + 55)
+    .style("font-size", 18)
     .text(data[1].legend);
 
 
   svg.append('g')
-    .style("font", "14px times")
-    .style("font-weight", "bold")
+    .style("font-size", "18px")
+    .style("font-weight", "normal")
     .attr('transform', `translate(0,${height})`)
     .call(d3.axisBottom(x));
 
   // add the y Axis
   svg.append('g')
+    .style("font-size", "18px")
+    .style("font-weight", "normal")
     .call(d3.axisLeft(y));
 
   return d3n;
