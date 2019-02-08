@@ -60,7 +60,7 @@ export function stackedBar({
     .attr('y2', function (d) { return height / yTicks * d - _margin.top; })
     .attr('x1', function (d) { return -_margin.left; })
     .attr('x2', function (d) { return width - _margin.left; })
-    .style('stroke', '#e8ebef')
+    .style('stroke', 'lightgray')
     .attr('transform', 'translate(' + _margin.left + ',' + _margin.top + ')');
 
   svg.selectAll('.bar2')
