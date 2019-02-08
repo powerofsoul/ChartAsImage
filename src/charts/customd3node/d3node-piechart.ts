@@ -70,10 +70,10 @@ export function pie({
   legend.append("text")
     .attr("x", -_radius/2 + 30)
     .attr("y", (d, i)=> _radius + 35 + i * 25)
+    .text((d) => d.data.label)
     .style("font", "14px times")
     .style("font-family", "Helvetica")
-    .style("font-weight", "bold")
-    .text((d) => d.data.label);
+    .style("font-weight", "bold");
 
   g.append('path')
     .attr('d', arc)
@@ -83,9 +83,9 @@ export function pie({
     .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
     .attr("margin-right", 10)
     .attr('dy', '.35em')
+    .text((d) => d.data.value +"%")
     .style("font-family", "Helvetica")
-    .style("font-weight", "bold")
-    .text((d) => d.data.value +"%");
+    .style("font-weight", "bold");
 
   return d3n;
 }
