@@ -71,6 +71,7 @@ export function pie({
     .attr("x", -_radius/2 + 30)
     .attr("y", (d, i)=> _radius + 35 + i * 25)
     .style("font", "14px times")
+    .style("font-family", "Helvetica")
     .style("font-weight", "bold")
     .text((d) => d.data.label);
 
@@ -82,6 +83,8 @@ export function pie({
     .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
     .attr("margin-right", 10)
     .attr('dy', '.35em')
+    .style("font-family", "Helvetica")
+    .style("font-weight", "bold")
     .text((d) => d.data.value +"%");
 
   return d3n;
