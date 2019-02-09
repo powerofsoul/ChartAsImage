@@ -127,7 +127,7 @@ export function stackedBar({
 
   legend.append("text")
     .attr("x", width + 30)
-    .attr("y", height/2 + 10)
+    .attr("y", height/2 + 15)
     .style("font-size", 18)
     .text(data[0].legend);
 
