@@ -10,7 +10,7 @@ export function stackedBar({
     </div>
   `,
   style: _style = '',
-  legend_width: _legend_width = 200,
+  legend_width: _legend_width = 250,
   width: _width = 500 + _legend_width,
   height: _height = 500,
   margin: _margin = { top: 20, right: 20, bottom: 30, left: 40 },
