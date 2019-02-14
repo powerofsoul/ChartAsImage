@@ -73,8 +73,7 @@ export function pie({
     .text((d) => d.data.label)
     .style("font", "14px times")
     .style("font-family", "Helvetica")
-    .style("font-weight", "bold");
-
+    
   g.append('path')
     .attr('d', arc)
     .style('fill', (d) => color(d.data.label));
