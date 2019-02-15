@@ -80,10 +80,11 @@ export function pie({
 
   g.append('text')
     .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
-    .attr("margin-right", 10)
+    .attr("margin-right", "10px")
     .attr('dy', '.35em')
     .text((d) => d.data.value +"%")
     .style("font-family", "Helvetica")
+    .style("font-size", "15px")
     .style("font-weight", "bold");
 
   return d3n;
