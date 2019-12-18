@@ -1,4 +1,4 @@
-import SVGToPng  = require('convert-svg-to-png')
+import {svg2png} from 'svg-png-converter';
 
 export class Chart{
     style: string;
@@ -10,13 +10,16 @@ export class Chart{
     }
 
     registerRequest(expressApp, path): void {
-        expressApp.get(path, (req, res) =>{
-            res.set('Content-Type', 'image/png');;
+        expressApp.get(path, async (req, res) =>{
             var svgString = this.svgString(req);
 
-            SVGToPng.convert(svgString).then((png)=>{
-                res.send(png);
-            });
+            let outputBuffer = await svg2png({ 
+                input: svgString, 
+                encoding: 'buffer', 
+                format: 'png',
+            })
+
+            res.end(outputBuffer);
         });
     }
 
