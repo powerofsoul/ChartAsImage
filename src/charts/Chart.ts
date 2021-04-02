@@ -14,7 +14,12 @@ export class Chart{
             res.set('Content-Type', 'image/png');;
             var svgString = this.svgString(req);
 
-            SVGToPng.convert(svgString).then((png)=>{
+            SVGToPng.convert(svgString, {
+                puppeteer : {
+                    headless: true,
+                    args: ['--no-sandbox','--disable-setuid-sandbox']
+                }
+            }).then((png)=>{
                 res.send(png);
             });
         });
