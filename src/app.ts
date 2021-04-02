@@ -8,7 +8,7 @@ import { StackedBarChart } from "./charts/StackedBarChart";
 class Server {
 
   public app: express;
-  public port: number = 3000;
+  public port = process.env.PORT || 3000;
 
   constructor() {
     this.app = express();
