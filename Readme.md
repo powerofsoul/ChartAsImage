@@ -10,7 +10,7 @@
 - Example Link:
     - /pie?label=marius,florin2,florin3&value=20,60,20
 - Output:
-  - ![Example](https://chart.astorian.com/pie?label=marius,florin2,florin3&value=20,60,20)
+  - ![Example](http://chart-as-image.herokuapp.com/pie?label=marius,florin2,florin3&value=20,60,20)
 
 ### 2. Bar Chart
 - Route: /bar
@@ -20,7 +20,7 @@
 - Example Link
   - bar?key=florin1,florin2,florin3&value=33,55,77
 - Output
-  - ![Example](https://chart.astorian.com/bar?key=florin1,florin2,florin3&value=33,55,77)
+  - ![Example](http://chart-as-image.herokuapp.com/bar?key=florin1,florin2,florin3&value=33,55,77)
 
 ### 3. ValueMax Chart
 - Route: /valuemax
@@ -32,4 +32,4 @@
 - Example Link
   - valuemax?key=first,second,third&value=10,20,30&max=20,30,40&legend=value,max
 - Output
-  - ![Example](https://chart.astorian.com/valuemax?key=first,second,third&value=10,20,30&max=20,30,40&legend=value,max)
+  - ![Example](http://chart-as-image.herokuapp.com/valuemax?key=first,second,third&value=10,20,30&max=20,30,40&legend=value,max)
